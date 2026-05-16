@@ -1,0 +1,22 @@
+version: "3.9"
+
+# Production overrides — use with:  docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  db:
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports: []           # Do NOT expose DB port publicly in prod
+
+  backend:
+    restart: always
+    environment:
+      APP_ENV: production
+    ports: []           # Traffic goes through ALB, not directly to container
+
+  frontend:
+    restart: always
+    ports: []           # Traffic goes through ALB
