@@ -70,9 +70,7 @@ try:
     if r.status_code == 200:
         jobs = r.json()
         if jobs:
-            import pandas as pd
-            df = pd.DataFrame(jobs)
-            st.dataframe(df, use_container_width=True)
+            st.json(jobs)
         else:
             st.info("No migration jobs found. Run your first migration from the Migrations page.")
     else:
