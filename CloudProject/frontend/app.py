@@ -77,3 +77,4 @@ try:
         st.warning("Could not fetch migration history.")
 except Exception as e:
     st.error(f"Backend unreachable: {e}")
+
